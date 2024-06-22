@@ -1,35 +1,46 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import './App.css';
+
+import GuessingMode from './components/GuessingMode';
+import SearchMode from './components/SearchMode';
+import { useState } from 'react';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [mode, setMode] = useState('search');
+
+  const handleModeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setMode(event.target.value);
+  };
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="app-container">
+        <div>
+          <label>
+            <input
+              type="radio"
+              value="search"
+              checked={mode === 'search'}
+              onChange={handleModeChange}
+            />
+            Search Mode
+          </label>
+        </div>
+        <div>
+          <label>
+            <input
+              type="radio"
+              value="guessing"
+              checked={mode === 'guessing'}
+              onChange={handleModeChange}
+            />
+            Guessing Mode
+          </label>
+        </div>
+        {mode === 'search' && <SearchMode />}
+        {mode === 'guessing' && <GuessingMode />}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
