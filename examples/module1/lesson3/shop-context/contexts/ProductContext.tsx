@@ -1,8 +1,9 @@
 import { createContext, useEffect, useState } from 'react';
-import { Product } from '../types/Product';
+
+import { ProductType } from '../types/Product';
 
 type ProductContextType = {
-  products: Product[];
+  products: ProductType[];
 };
 
 export const ProductContext = createContext<ProductContextType>({
@@ -10,7 +11,7 @@ export const ProductContext = createContext<ProductContextType>({
 });
 
 const ProductProvider = ({ children }: { children: React.ReactNode }) => {
-  const [products, setProducts] = useState<Product[]>([]);
+  const [products, setProducts] = useState<ProductType[]>([]);
 
   useEffect(() => {
     const fetchProducts = async () => {

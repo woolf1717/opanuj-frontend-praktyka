@@ -1,12 +1,9 @@
-import { useContext } from 'react';
-
-import { Link } from 'react-router-dom';
-
-import { FiTrash2 } from 'react-icons/fi';
-import { IoMdClose } from 'react-icons/io';
-
 import { CartContext } from '../contexts/CartContext';
 import CartItem from './CartItem';
+import { FiTrash2 } from 'react-icons/fi';
+import { IoMdClose } from 'react-icons/io';
+import { Link } from 'react-router-dom';
+import { useContext } from 'react';
 
 interface SidebarProps {
   isSidebarOpen: boolean;

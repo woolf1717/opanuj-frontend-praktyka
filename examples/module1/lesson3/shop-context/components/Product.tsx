@@ -1,10 +1,9 @@
-import { useContext } from 'react';
-import { Link } from 'react-router-dom';
-
 import { BsEyeFill, BsPlus } from 'react-icons/bs';
 
 import { CartContext } from '../contexts/CartContext';
-import { Product as ProductType } from '../types/Product';
+import { Link } from 'react-router-dom';
+import { ProductType } from '../types/Product';
+import { useContext } from 'react';
 
 const Product = ({ product }: { product: ProductType }) => {
   const { addToCart } = useContext(CartContext);

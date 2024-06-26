@@ -1,12 +1,13 @@
 import { createContext, useEffect, useState } from 'react';
+
 import { CartItem } from '../types/CartItem';
-import { Product } from '../types/Product';
+import { ProductType } from '../types/Product';
 
 type CartContextType = {
   cart: CartItem[];
   itemAmount: number;
   total: number;
-  addToCart: (product: Product | CartItem) => void;
+  addToCart: (product: ProductType | CartItem) => void;
   removeFromCart: (id: number) => void;
   clearCart: () => void;
   decreaseAmount: (id: number) => void;
@@ -35,7 +36,7 @@ const CartProvider = ({ children }: { children: React.ReactNode }) => {
     setItemAmount(amount);
   }, [cart]);
 
-  const addToCart = (product: Product | CartItem) => {
+  const addToCart = (product: ProductType | CartItem) => {
     const cartItem = cart.find((item) => {
       return item.id === product.id;
     });

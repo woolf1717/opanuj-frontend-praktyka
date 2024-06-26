@@ -1,3 +1,3 @@
-import { Product } from './Product';
+import { ProductType } from './Product';
 
-export type CartItem = Product & { amount: number };
+export type CartItem = ProductType & { amount: number };

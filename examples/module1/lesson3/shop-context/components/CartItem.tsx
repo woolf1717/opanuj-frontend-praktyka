@@ -1,10 +1,9 @@
-import { useContext } from 'react';
-import { Link } from 'react-router-dom';
-
 import { IoMdAdd, IoMdClose, IoMdRemove } from 'react-icons/io';
 
-import { CartItem as CartItemType } from '../types/CartItem';
 import { CartContext } from '../contexts/CartContext';
+import { CartItem as CartItemType } from '../types/CartItem';
+import { Link } from 'react-router-dom';
+import { useContext } from 'react';
 
 const CartItem = ({ item }: { item: CartItemType }) => {
   const { removeFromCart, addToCart, decreaseAmount } = useContext(CartContext);
