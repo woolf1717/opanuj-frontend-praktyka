@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from 'react';
+
 import { Product } from '../types/Product';
 
 type ProductContextType = {
