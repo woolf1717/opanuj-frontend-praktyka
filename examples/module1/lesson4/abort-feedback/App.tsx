@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface User {
   id: number;
@@ -9,26 +9,49 @@ const API_URL = '/api/data/users?timeout=10000';
 
 const App = () => {
   const [users, setUsers] = useState<User[]>([]);
+  const [tryAgain, setTryAgain] = useState(false);
+  const [isLoaging, setIsLoading] = useState(false);
+  const [isLoadingLong, setIsLoadingLong] = useState(false);
+  const [isError, setIsError] = useState(false);
+
+  const handleTryAgain = () => {
+    setTryAgain(!tryAgain);
+  };
 
   useEffect(() => {
+    setIsLoading(true);
+    const timeoutId = setTimeout(() => {
+      setIsLoadingLong(true);
+    }, 5000);
+
     fetch(API_URL)
       .then((res) => res.json())
       .then(({ users }) => {
+        clearTimeout(timeoutId);
         setUsers(users);
+        setIsLoading(false);
       });
-  }, []);
+  }, [tryAgain]);
 
   return (
     <div>
       <div className="flex flex-row items-center justify-between py-4">
         <h1 className="text-2xl font-bold">Users</h1>
+        {isLoaging && <p>Is Loading</p>}
         <div className="flex flex-row items-center">
-          <p className="mr-2">
-            Sorry, there seems to be connectivity issues...
-          </p>
-          <button className="text-blue-400 bg-blue-200 hover:text-blue-200 hover:bg-blue-400 rounded-md p-4">
-            Try again
-          </button>
+          {isLoaging && isLoadingLong && (
+            <>
+              <p className="mr-2">
+                Sorry, there seems to be connectivity issues...
+              </p>
+              <button
+                onClick={handleTryAgain}
+                className="text-blue-400 bg-blue-200 hover:text-blue-200 hover:bg-blue-400 rounded-md p-4"
+              >
+                Try again
+              </button>
+            </>
+          )}
         </div>
       </div>
       <ul className="space-y-2">
