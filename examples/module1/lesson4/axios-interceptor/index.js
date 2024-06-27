@@ -1,13 +1,18 @@
 import axios from 'axios';
 
 // Add a request interceptor
+
 axios.interceptors.request.use(function (config) {
-  return config;
+  // Do something before request is sent
+  const configWithModifications = { ...config, data: new Date().getTime() };
+
+  return configWithModifications;
 });
 
 // Add a response interceptor
 axios.interceptors.response.use(function (response) {
-  // Do something with response data
+  const coutAwaitTimeInMS = new Date().getTime() - response.config.data;
+  console.log(coutAwaitTimeInMS);
   return response;
 });
 
