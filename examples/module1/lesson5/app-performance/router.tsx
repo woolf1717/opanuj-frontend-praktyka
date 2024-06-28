@@ -1,11 +1,12 @@
-import { createBrowserRouter } from 'react-router-dom';
-import Root from './routes/Root';
-import { SlowApp } from './routes/AppV1';
+import ExerciseApp from './routes/AppV4';
 import { FastApp } from './routes/AppV2';
 import { FasterApp } from './routes/AppV3';
-import { clientSideApiLoader } from './loaders/clientSideApiLoader';
-import { serverSideApiLoader } from './loaders/serverSideApiLoader';
 import { Home } from './routes/Home';
+import Root from './routes/Root';
+import { SlowApp } from './routes/AppV1';
+import { clientSideApiLoader } from './loaders/clientSideApiLoader';
+import { createBrowserRouter } from 'react-router-dom';
+import { serverSideApiLoader } from './loaders/serverSideApiLoader';
 
 export const router = createBrowserRouter([
   {
@@ -34,6 +35,12 @@ export const router = createBrowserRouter([
         loader: serverSideApiLoader,
         path: 'v3',
         element: <FasterApp />,
+      },
+      {
+        id: 'exercise-app',
+        loader: serverSideApiLoader,
+        path: 'v4',
+        element: <ExerciseApp />,
       },
     ],
   },

@@ -29,6 +29,12 @@ export default function Root() {
           >
             App v3
           </NavLink>
+          <NavLink
+            to="/v4"
+            className={({ isActive }) => (isActive ? 'font-bold' : '')}
+          >
+            App v4
+          </NavLink>
         </div>
         <p>Hello, John!</p>
       </div>
