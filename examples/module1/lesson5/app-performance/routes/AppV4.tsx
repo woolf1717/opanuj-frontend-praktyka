@@ -12,7 +12,7 @@ export default function ExerciseApp() {
     <QueryClientProvider client={queryClient}>
       <div className="max-w-7xl mx-auto">
         <Articles />
-        <ArticlesTwo />
+        {/* <ArticlesTwo /> */}
       </div>
     </QueryClientProvider>
   );

@@ -6,12 +6,21 @@ import { Placeholder } from './Placeholder';
 import axios from 'axios';
 import { useAuthorsQuery } from './TanStackQuery';
 import { useLoaderData } from 'react-router-dom';
+import { useMutation } from '@tanstack/react-query';
 
 export function Articles() {
   const [articles, setArticles] = useState<Article[]>([]);
   const { articlesAPI, authorsAPI } = useLoaderData() as Bootstrap;
 
   const { data: authors } = useAuthorsQuery(authorsAPI);
+
+  const mutation = useMutation({
+    mutationFn: (newArticle: Article) => {
+      setArticles((prevArticles) => [...prevArticles, newArticle]);
+
+      return axios.post(articlesAPI, newArticle);
+    },
+  });
 
   useEffect(() => {
     axios
@@ -43,6 +52,18 @@ export function Articles() {
       {authors && (
         <p className="text-right mt-4">Created by {authors.length} authors</p>
       )}
+      <button
+        onClick={() =>
+          mutation.mutate({
+            author: 'John Doe',
+            content: 'Lorem ipsum',
+            title: 'New article',
+            id: articles.length + 1,
+          })
+        }
+      >
+        Add article
+      </button>
     </>
   );
 }

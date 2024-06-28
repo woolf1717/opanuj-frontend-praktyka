@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 
 import { Article } from '../../types/Article';
-import { Author } from '../../types/Authors';
 import { Bootstrap } from '../../types/Bootstrap';
 import { Placeholder } from './Placeholder';
 import axios from 'axios';
@@ -16,7 +15,7 @@ export function ArticlesTwo() {
 
   useEffect(() => {
     axios
-      .get<{ articles: Article[] }>(articlesAPI)
+      .get<{ articles: Article[] }>('articlesAPI')
       .then(({ data: { articles } }) => {
         setArticles(articles);
       });
