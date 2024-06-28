@@ -1,3 +1,4 @@
+import { QueryClient, useMutation } from '@tanstack/react-query';
 import { useEffect, useState } from 'react';
 
 import { Article } from '../../types/Article';
@@ -6,9 +7,9 @@ import { Placeholder } from './Placeholder';
 import axios from 'axios';
 import { useAuthorsQuery } from './TanStackQuery';
 import { useLoaderData } from 'react-router-dom';
-import { useMutation } from '@tanstack/react-query';
 
 export function Articles() {
+  const queryClient = new QueryClient();
   const [articles, setArticles] = useState<Article[]>([]);
   const { articlesAPI, authorsAPI } = useLoaderData() as Bootstrap;
 
@@ -19,6 +20,9 @@ export function Articles() {
       setArticles((prevArticles) => [...prevArticles, newArticle]);
 
       return axios.post(articlesAPI, newArticle);
+    },
+    onSettled: async () => {
+      return await queryClient.invalidateQueries({ queryKey: ['authors'] });
     },
   });
 
