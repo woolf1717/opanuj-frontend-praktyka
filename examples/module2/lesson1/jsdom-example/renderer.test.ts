@@ -1,6 +1,7 @@
 // @vitest-environment jsdom
 
-import { describe, test, expect } from 'vitest';
+import { describe, expect, test } from 'vitest';
+
 import { renderItems } from './renderer';
 
 const users: User[] = [
@@ -16,6 +17,20 @@ describe('User renderer', () => {
     const container = document.createElement('div');
     renderItems(container, users);
     expect(Array.from(container.querySelectorAll('li'))).toHaveLength(3);
+
+    console.log(container.querySelectorAll('li')[1].textContent);
+
+    // zweryfikuj ich zawartość po wyrenderowaniu danych.
+
+    expect(container.querySelectorAll('li')[0].textContent).toContain(
+      'Name: John' && 'Age: 30'
+    );
+    expect(container.querySelectorAll('li')[1].textContent).toContain(
+      'Name: Jane' && 'Age: 25'
+    );
+    expect(container.querySelectorAll('li')[2].textContent).toContain(
+      'Name: Jack' && 'Age: 40'
+    );
   });
 
   test('should render only regular users if non-admin is rendering the list', () => {
@@ -23,6 +38,16 @@ describe('User renderer', () => {
 
     const container = document.createElement('div');
     renderItems(container, users);
+
     expect(Array.from(container.querySelectorAll('li'))).toHaveLength(2);
+    // zweryfikuj ich zawartość po wyrenderowaniu danych.
+
+    expect(container.querySelectorAll('li')[0].textContent).toContain(
+      'Name: John' && 'Age: 30'
+    );
+
+    expect(container.querySelectorAll('li')[1].textContent).toContain(
+      'Name: Jack' && 'Age: 40'
+    );
   });
 });
