@@ -4,10 +4,11 @@ import GuessingMode from './components/GuessingMode';
 import SearchMode from './components/SearchMode';
 import SimpleAppChecklistAndTests from './components/SimpleAppChecklistAndTests/SimpleAppChecklistAndTests';
 import TanstackMode from './components/TanstackMode';
+import { bookStaticList } from './components/SimpleAppChecklistAndTests/bookStaticList';
 import { useState } from 'react';
 
 function App() {
-  const [mode, setMode] = useState('tanstack');
+  const [mode, setMode] = useState('simpleAppChecklistAndTests');
 
   const handleModeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setMode(event.target.value);
@@ -62,7 +63,7 @@ function App() {
         {mode === 'search' && <SearchMode />}
         {mode === 'guessing' && <GuessingMode />}
         {mode === 'simpleAppChecklistAndTests' && (
-          <SimpleAppChecklistAndTests />
+          <SimpleAppChecklistAndTests bookList={bookStaticList} />
         )}
       </div>
     </>
