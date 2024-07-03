@@ -2,6 +2,7 @@ import './App.css';
 
 import GuessingMode from './components/GuessingMode';
 import SearchMode from './components/SearchMode';
+import SimpleAppChecklistAndTests from './components/SimpleAppChecklistAndTests/SimpleAppChecklistAndTests';
 import TanstackMode from './components/TanstackMode';
 import { useState } from 'react';
 
@@ -47,10 +48,22 @@ function App() {
             />
             Guessing Mode
           </label>
+          <label>
+            <input
+              type="radio"
+              value="simpleAppChecklistAndTests"
+              checked={mode === 'simpleAppChecklistAndTests'}
+              onChange={handleModeChange}
+            />
+            Simple App Checklist and Tests
+          </label>
         </div>
         {mode === 'tanstack' && <TanstackMode />}
         {mode === 'search' && <SearchMode />}
         {mode === 'guessing' && <GuessingMode />}
+        {mode === 'simpleAppChecklistAndTests' && (
+          <SimpleAppChecklistAndTests />
+        )}
       </div>
     </>
   );
