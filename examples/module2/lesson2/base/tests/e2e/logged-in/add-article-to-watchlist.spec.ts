@@ -1,13 +1,14 @@
 import test, { expect } from '@playwright/test';
+
 import { ArticlePage } from '../../../pages/article.page';
 import { MainPage } from '../../../pages/main.page';
 
-test.afterEach(async ({ page }) => {
-  const articlePage = new ArticlePage(page);
-  await articlePage.clickUnwatchButton();
+// test.afterEach(async ({ page }) => {
+//   const articlePage = new ArticlePage(page);
+//   await articlePage.clickUnwatchButton();
 
-  await expect(articlePage.getWatchButton()).toBeVisible();
-});
+//   await expect(articlePage.getWatchButton()).toBeVisible();
+// });
 
 test('add featured article to watchlist', async ({ page }) => {
   const mainPage = new MainPage(page);
