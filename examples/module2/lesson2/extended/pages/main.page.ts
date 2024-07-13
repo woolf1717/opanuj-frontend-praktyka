@@ -1,4 +1,5 @@
 import { Locator, Page } from '@playwright/test';
+
 import { URLs } from '../utils/constants';
 
 export class MainPage {
@@ -27,6 +28,10 @@ export class MainPage {
 
   goToLoginPage() {
     return this.navigation.getByRole('link', { name: 'Log in' }).click();
+  }
+
+  goToComunityPortal() {
+    return this.navigation.getByTitle('The hub for editors').click();
   }
 
   async goToFeaturedArticle() {

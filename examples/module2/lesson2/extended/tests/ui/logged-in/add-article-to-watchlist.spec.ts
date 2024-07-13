@@ -3,12 +3,12 @@ import { expect, test } from '../../../fixtures';
 import { ArticlePage } from '../../../pages/article.page';
 import { MainPage } from '../../../pages/main.page';
 
-// test.afterEach(async ({ page }) => {
-//   const articlePage = new ArticlePage(page);
-//   await articlePage.clickTopbarUnwatchButton();
+test.afterEach(async ({ page }) => {
+  const articlePage = new ArticlePage(page);
+  await articlePage.clickTopbarUnwatchButton();
 
-//   await expect(articlePage.getTopbarWatchButton()).toBeVisible();
-// });
+  await expect(articlePage.getTopbarWatchButton()).toBeVisible();
+});
 
 test('add featured article to watchlist', async ({ page }) => {
   const mainPage = new MainPage(page);
