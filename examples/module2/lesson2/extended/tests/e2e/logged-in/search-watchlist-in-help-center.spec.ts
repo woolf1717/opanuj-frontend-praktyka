@@ -23,7 +23,7 @@ test('check if seach works properly', async ({ page }) => {
   // eslint-disable-next-line playwright/no-wait-for-selector
   await page.waitForSelector('.searchresult');
 
-  const searchResults = await page.locator('.searchresult');
+  const searchResults = page.locator('.searchresult');
 
   const count = await searchResults.count();
 

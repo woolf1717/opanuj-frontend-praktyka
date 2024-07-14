@@ -1,6 +1,7 @@
 import './App.css';
 
 import GuessingMode from './components/GuessingMode';
+import RickAndMorty from './components/RickAndMorty';
 import SearchMode from './components/SearchMode';
 import SimpleAppChecklistAndTests from './components/SimpleAppChecklistAndTests/SimpleAppChecklistAndTests';
 import TanstackMode from './components/TanstackMode';
@@ -8,7 +9,7 @@ import { bookStaticList } from './components/SimpleAppChecklistAndTests/bookStat
 import { useState } from 'react';
 
 function App() {
-  const [mode, setMode] = useState('simpleAppChecklistAndTests');
+  const [mode, setMode] = useState('rickandmorty');
 
   const handleModeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setMode(event.target.value);
@@ -58,6 +59,15 @@ function App() {
             />
             Simple App Checklist and Tests
           </label>
+          <label>
+            <input
+              type="radio"
+              value="rickandmorty"
+              checked={mode === 'rickandmorty'}
+              onChange={handleModeChange}
+            />
+            Rick and Morty
+          </label>
         </div>
         {mode === 'tanstack' && <TanstackMode />}
         {mode === 'search' && <SearchMode />}
@@ -65,6 +75,7 @@ function App() {
         {mode === 'simpleAppChecklistAndTests' && (
           <SimpleAppChecklistAndTests bookList={bookStaticList} />
         )}
+        {mode === 'rickandmorty' && <RickAndMorty />}
       </div>
     </>
   );

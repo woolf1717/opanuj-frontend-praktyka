@@ -17,4 +17,9 @@ export const watchHandlers = [
       watch: [{ title: formData.get('titles'), ns: 0, ...watchedState }],
     });
   }),
+
+  http.get('/wiki/Playwright', ({ request }) => {
+    console.log(request);
+    return;
+  }),
 ];
