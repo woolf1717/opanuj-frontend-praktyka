@@ -16,9 +16,15 @@ export const Hints = () => {
   };
 
   return (
-    <div>
-      Masz problem ze zgadnięciem hasła? Skorzystaj z podpowiedzi.
-      <div className="text-green-500 mt-1 h-6" data-testid="hint-text">
+    <section>
+      <h2>Masz problem ze zgadnięciem hasła? Skorzystaj z podpowiedzi.</h2>
+      <div
+        className="text-green-500 mt-1 h-6"
+        data-testid="hint-text"
+        aria-live="polite"
+        aria-atomic="true"
+        role="alert"
+      >
         {currentHintIndex !== -1 ? `${hints[currentHintIndex]}` : ''}
       </div>
       <button
@@ -27,6 +33,6 @@ export const Hints = () => {
       >
         Pokaż podpowiedź
       </button>
-    </div>
+    </section>
   );
 };

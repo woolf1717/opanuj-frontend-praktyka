@@ -1,4 +1,5 @@
 import { FormEvent, useState } from 'react';
+
 import { z } from 'zod';
 
 const passwordSchema = z
@@ -31,6 +32,7 @@ export const GuessPassword = () => {
       onSubmit={handleGuess}
       className="flex flex-col gap-3 w-96 mx-auto"
       data-testid="guess-form"
+      aria-label="Formularz zgadywania hasła"
     >
       <div className="flex flex-col">
         <input
@@ -38,6 +40,7 @@ export const GuessPassword = () => {
           name="password"
           type="text"
           value={password}
+          aria-label="Hasło"
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Wpisz hasło..."
           className="border border-gray-300 p-2 rounded"

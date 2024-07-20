@@ -1,13 +1,16 @@
 export const GameIntro = () => {
   return (
-    <div>
-      <h1 className="text-2xl text-violet-600 mb-4">
+    <section aria-labelledby="question-heading" tabIndex={-1}>
+      <h1 className="text-2xl text-violet-500 mb-4">
         Witaj w grze zgadywania hasła!
       </h1>
-      <div>
+      <h2 id="question-heading" className="sr-only">
+        Pytanie
+      </h2>
+      <p aria-labelledby="question-heading">
         Jak nazywa się postać z serialu Rick and Morty widoczna po prawej
         stronie ekranu?
-      </div>
-    </div>
+      </p>
+    </section>
   );
 };

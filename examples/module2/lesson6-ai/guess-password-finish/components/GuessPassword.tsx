@@ -1,4 +1,5 @@
 import { FormEvent, useState } from 'react';
+
 import { z } from 'zod';
 
 const passwordSchema = z
@@ -36,20 +37,31 @@ export const GuessPassword = () => {
         <input
           id="password"
           name="password"
+          aria-label="Hasło"
           type="text"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Wpisz hasło..."
-          className="border border-gray-300 p-2 rounded"
+          className="border border-gray-300 p-2 rounded text-black"
         />
       </div>
       <button
         type="submit"
         className="p-2 bg-violet-600 text-white rounded hover:bg-violet-700"
+        aria-label="Zgadnij"
       >
         Zgadnij
       </button>
-      {<div className="text-red-500 h-6">{passwordError}</div>}
+      {
+        <div
+          className="text-red-400 h-6"
+          data-testid="password-error"
+          aria-live="polite"
+          role="alert"
+        >
+          {passwordError}
+        </div>
+      }
     </form>
   );
 };
