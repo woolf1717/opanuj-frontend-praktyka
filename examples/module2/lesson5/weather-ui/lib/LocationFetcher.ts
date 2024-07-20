@@ -1,16 +1,33 @@
-import axios from 'axios';
-import { LocationWeather } from '../models/LocationWeather';
-import { parseLocation } from './LocationParser';
+import {
+  LocationWeather,
+  LocationWeatherNEWAPI,
+} from '../models/LocationWeather';
+
 import { WeatherRequest } from '../models/WeatherRequest';
+import axios from 'axios';
+import { parseLocation } from './LocationParser';
 
 async function getWeatherData(
   request: WeatherRequest
-): Promise<LocationWeather> {
-  const { data } = await axios.get<LocationWeather>(
+): Promise<LocationWeather | LocationWeatherNEWAPI> {
+  const { data } = await axios.get<LocationWeather | LocationWeatherNEWAPI>(
     `/api/weather?city=${request.city}&country=${request.country}`
   );
-
-  return data;
+  if (Array.isArray(data.weatherDetails)) {
+    return data;
+  } else if (Array.isArray(data.weatherDetails.Weather)) {
+    return {
+      ...data,
+      weatherDetails: data.weatherDetails.Weather.map((details) => ({
+        ...details,
+        averageTemperature: details.average_temperature,
+      })),
+    } as LocationWeather;
+  } else {
+    throw new Error(
+      `Cannot fetch weather data for provided location: ${request.city}, ${request.country}. Unknown data format.`
+    );
+  }
 }
 
 export async function fetchWeather(
