@@ -1,7 +1,7 @@
 {
   "color": {
     "alias": {
-      "foreground": {
+      "bg-color": {
         "1": {
           "value": "{color.global.grey.14.value}"
         }

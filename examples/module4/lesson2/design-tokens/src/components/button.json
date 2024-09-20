@@ -2,7 +2,7 @@
   "button": {
     "text": {
       "color": {
-        "value": "{color.alias.text.primary.value}"
+        "value": "{color.alias.bg-color.1.value}"
       }
     }
   }
