@@ -3,6 +3,7 @@ name: Dependabot
 on:
   schedule:
     - cron: '0 0 * * 1' # Run every Monday at midnight
+  workflow_dispatch: # Add this line to enable manual triggering
 
 jobs:
   dependabot:
