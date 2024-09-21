@@ -39,6 +39,7 @@ jobs:
         working-directory: ${{ env.LIB_PACKAGEJSON_DIR }}
         run: |
           npm install
+          npm install vitest@latest
           npm ci
           npm run build
 
