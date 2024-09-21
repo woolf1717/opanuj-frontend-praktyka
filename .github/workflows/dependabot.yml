@@ -1,9 +1,16 @@
-version: 2
-updates:
-  # Enable version updates for npm
-  - package-ecosystem: "npm"
-    # Look for `package.json` and `lock` files in the `root` directory
-    directory: "/examples/module4/lesson2/design-tokens"
-    # Check the npm registry for updates every day (weekdays)
-    schedule:
-      interval: "weekly"
+name: Dependabot
+
+on:
+  schedule:
+    - cron: '0 0 * * 1' # Run every Monday at midnight
+
+jobs:
+  dependabot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check for updates
+        uses: dependabot/dependabot-core@v2
+        with:
+          package-ecosystem: 'npm'
+          directory: '/examples/module4/lesson2/design-tokens'
+          interval: 'weekly'
