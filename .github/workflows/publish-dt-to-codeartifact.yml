@@ -20,6 +20,7 @@ env:
   AWS_CA_REPOSITORY: woolf1717
   AWS_CA_DOMAIN_OWNER: 021891611839
   LIB_PACKAGEJSON_DIR: examples/module4/lesson2/design-tokens
+  NPM_ACCESS_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
 
 jobs:
   publish:
@@ -37,6 +38,7 @@ jobs:
       - name: Build library
         working-directory: ${{ env.LIB_PACKAGEJSON_DIR }}
         run: |
+          npm install
           npm ci
           npm run build
 
