@@ -37,11 +37,6 @@ jobs:
       - name: Build library
         working-directory: ${{ env.LIB_PACKAGEJSON_DIR }}
         run: |
-          npm login
-
-      - name: Build library
-        working-directory: ${{ env.LIB_PACKAGEJSON_DIR }}
-        run: |
           npm ci
           npm run build
 
