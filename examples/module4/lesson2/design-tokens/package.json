@@ -1,6 +1,6 @@
 {
   "name": "@woolf1717/design-tokens",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Design tokens collection for woolf1717 Design System",
   "license": "MIT",
   "keywords": [
@@ -49,6 +49,7 @@
     "directory": "examples/module4/lesson2/design-tokens"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "restricted",
+    "registry": "https://woolf1717-021891611839.d.codeartifact.eu-central-1.amazonaws.com/npm/woolf1717/"
   }
 }

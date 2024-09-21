@@ -16,9 +16,9 @@ on:
 env:
   AWS_CA_TOKEN: ${{ secrets.AWS_CA_TOKEN }}
   AWS_CA_REGION: eu-central-1
-  AWS_CA_DOMAIN: przeprogramowani-ofe
-  AWS_CA_REPOSITORY: przeprogramowani-opanuj-frontend
-  AWS_CA_DOMAIN_OWNER: 438634852085
+  AWS_CA_DOMAIN: woolf1717
+  AWS_CA_REPOSITORY: woolf1717
+  AWS_CA_DOMAIN_OWNER: 021891611839
   LIB_PACKAGEJSON_DIR: examples/module4/lesson2/design-tokens
 
 jobs:

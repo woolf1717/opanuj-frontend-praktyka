@@ -3,9 +3,10 @@
     "global": {
       "grey": {
         "14": {
-          "value": "#232323",
+          "value": "#222222",
           "type": "color"
         },
+
         "16": {
           "value": "#272727",
           "type": "color"
