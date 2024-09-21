@@ -68,7 +68,7 @@ jobs:
 
       - name: Debug secrets.AWS_CA_TOKEN
         run: |
-          if [ -n "${{ secrets.AWS_CA_TOKEN }}" ]; then
+          if [ -n "${{ env.AWS_CA_TOKEN }}" ]; then
             echo "secrets.AWS_CA_TOKEN is set and its length is ${#AWS_CA_TOKEN}"
           else
             echo "secrets.AWS_CA_TOKEN is not set or empty"
