@@ -66,13 +66,20 @@ jobs:
         with:
           version-type: ${{ github.event.inputs.version-type }}
 
+      - name: Debug secrets.AWS_CA_TOKEN
+        run: |
+          if [ -n "${{ secrets.AWS_CA_TOKEN }}" ]; then
+            echo "secrets.AWS_CA_TOKEN is set and its length is ${#AWS_CA_TOKEN}"
+          else
+            echo "secrets.AWS_CA_TOKEN is not set or empty"
+          fi
+
       - name: Publish to registry
         working-directory: ${{ env.LIB_PACKAGEJSON_DIR }}
         run: |
           REGISTRY_BASE_URL="${{ env.AWS_CA_DOMAIN }}-${{ env.AWS_CA_DOMAIN_OWNER }}.d.codeartifact.${{ env.AWS_CA_REGION }}.amazonaws.com/npm/${{ env.AWS_CA_REPOSITORY }}/"
           npm config set registry "https://$REGISTRY_BASE_URL"
-          echo ${{ env.AWS_CA_TOKEN }}
-          echo ${{ secrets.AWS_CA_TOKEN }}
+
           npm set "//$REGISTRY_BASE_URL:_authToken=${{ env.AWS_CA_TOKEN }}"
 
 
