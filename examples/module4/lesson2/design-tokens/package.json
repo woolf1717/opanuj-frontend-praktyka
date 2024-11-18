@@ -39,7 +39,7 @@
     "rimraf": "^5.0.5",
     "rollup": "^4.14.1",
     "rollup-plugin-dts": "^6.1.0",
-    "style-dictionary": "^3.9.2",
+    "style-dictionary": "^4.2.0",
     "typescript": "^5.4.5",
     "vitest": "^2.1.1"
   },
