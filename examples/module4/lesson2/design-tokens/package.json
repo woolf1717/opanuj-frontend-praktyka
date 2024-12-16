@@ -32,7 +32,7 @@
     "update:token": "./update_token.sh"
   },
   "devDependencies": {
-    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-node-resolve": "^16.0.0",
     "@rollup/plugin-replace": "^5.0.5",
     "@rollup/plugin-typescript": "^11.1.6",
     "np": "^10.0.3",
