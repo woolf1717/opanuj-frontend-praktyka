@@ -3,9 +3,9 @@
 # Please see the documentation for all configuration options:
 # https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
 
-version: 2
-updates:
-  - package-ecosystem: "npm" # See documentation for possible values
-    directory: "/examples/module4/lesson2/design-tokens" # Location of package manifests
-    schedule:
-      interval: "weekly"
+# version: 2
+# updates:
+#   - package-ecosystem: "npm" # See documentation for possible values
+#     directory: "/examples/module4/lesson2/design-tokens" # Location of package manifests
+#     schedule:
+      # interval: "weekly"
